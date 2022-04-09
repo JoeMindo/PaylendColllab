@@ -8,7 +8,6 @@ import { BASEURL, clientSecret } from "./urls.js";
  * @returns The response from the server.
  */
 const login = async (phone, password) => {
-  //let cSecret = "1df08160-1f6f-4e5e-bcce-c0d4188fef49";
   let response;
   let payload = {
     login_type: "phone",
@@ -21,7 +20,7 @@ const login = async (phone, password) => {
       payload
     );
   } catch (err) {
-    response = err.response.data.message;
+    return err;
   }
   return response;
 };
