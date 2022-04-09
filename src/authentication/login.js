@@ -1,8 +1,9 @@
 import login from "../api/authentication.js";
 import { strings } from "../strings/strings.js";
 
-const loginUser = (phone, password) => {
-  let response = login(phone, password);
+const loginUser = async (phone, password) => {
+  let response = await login(phone, password);
+  console.log("The response is", response);
   return response.status === 200
     ? `${strings.con.en}${strings.welcome.en}${strings.selectOption.en}\n
     1. ${strings.okoa.en}\n

@@ -8,6 +8,12 @@ export const getText = (requestBody, index) => {
   return requestBody.split("*")[index];
 };
 
+/**
+ * It takes a string and returns the number of words in the string
+ * @param requestBody - The body of the request.
+ * @returns The length of the array created by splitting the requestBody string at the asterisk
+ * character.
+ */
 export const getTextLength = (requestBody) => {
   return requestBody.split("*").length;
 };

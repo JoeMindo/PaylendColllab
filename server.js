@@ -39,7 +39,7 @@ app.post("/ussd", async (req, res) => {
   } else {
     if (textLength === 1 && text !== "") {
       let password = getText(text, 0);
-      message = loginUser(phone, password);
+      message = await loginUser(phone, password);
     }
   }
   res.send(message);
