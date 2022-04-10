@@ -4,9 +4,7 @@
  * @param index - The index of the text you want to get.
  * @returns The text at the index of the request body.
  */
-export const getText = (requestBody, index) => {
-  return requestBody.split("*")[index];
-};
+export const getText = (requestBody, index) => requestBody.split('*')[index];
 
 /**
  * It takes a string and returns the number of words in the string
@@ -14,6 +12,4 @@ export const getText = (requestBody, index) => {
  * @returns The length of the array created by splitting the requestBody string at the asterisk
  * character.
  */
-export const getTextLength = (requestBody) => {
-  return requestBody.split("*").length;
-};
+export const getTextLength = (requestBody) => requestBody.split('*').length;
