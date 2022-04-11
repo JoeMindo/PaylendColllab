@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import { ussdRouter } from 'ussd-router';
 
 import { getText, getTextLength } from './src/helpers/stringmanipulation';
 import strings from './src/strings/strings';
@@ -29,16 +30,20 @@ app.use((req, res, next) => {
 });
 
 app.post('/ussd', async (req, res) => {
-  const { text } = req.body;
+  const rawText = req.body.text;
+  const text = ussdRouter(rawText);
   const phone = req.body.phoneNumber;
   let message;
 
   const textLength = getTextLength(text);
   if (textLength === 1 && text === '') {
     message = `${strings.con.en} ${strings.welcome.en}${strings.login.en}\n1. ${strings.resetPin.en}\n`;
-  } else if (textLength === 1 && text !== '') {
+  } else if (textLength === 1 && text !== '' && text.length > 2) {
     const password = getText(text, 0);
     message = await loginUser(phone, password);
+  } else if (textLength === 1 && getText(text, [0]) === '1') {
+    message = `${strings.con.en} ${strings.resetInstructionsSent.en}`;
+    message += `${strings.footer.en}`;
   }
   res.send(message);
 });

@@ -35,6 +35,9 @@ const strings = {
   resetPin: {
     en: 'Reset pin',
   },
+  resetInstructionsSent: {
+    en: 'The reset instructions have been sent to your phone number\n',
+  },
 };
 
 export default strings;
