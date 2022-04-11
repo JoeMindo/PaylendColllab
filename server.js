@@ -43,6 +43,6 @@ app.post('/ussd', async (req, res) => {
   res.send(message);
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   // console.log(`Example app listening on port ${port}!`);
 });
