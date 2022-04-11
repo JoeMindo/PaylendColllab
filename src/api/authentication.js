@@ -1,5 +1,5 @@
-import axios from "axios";
-import { BASEURL, clientSecret } from "./urls.js";
+import axios from 'axios';
+import { BASEURL, clientSecret } from './urls';
 
 /**
  * It takes a phone number and password, and returns a response from the server
@@ -8,20 +8,19 @@ import { BASEURL, clientSecret } from "./urls.js";
  * @returns The response from the server.
  */
 const login = async (phone, password) => {
-  //let cSecret = "1df08160-1f6f-4e5e-bcce-c0d4188fef49";
   let response;
-  let payload = {
-    login_type: "phone",
+  const payload = {
+    login_type: 'phone',
     phone,
     password,
   };
   try {
     response = await axios.post(
       `${BASEURL}/auth/signin?${clientSecret}`,
-      payload
+      payload,
     );
   } catch (err) {
-    response = err.response.data.message;
+    return err;
   }
   return response;
 };
