@@ -6,7 +6,7 @@ import { ussdRouter } from 'ussd-router';
 
 import { getText, getTextLength } from './src/helpers/stringmanipulation';
 import strings from './src/strings/strings';
-import loginUser from './src/authentication/login';
+import loginUser, { resetPassword } from './src/authentication/login';
 
 const app = express();
 const port = 3000;
@@ -42,7 +42,7 @@ app.post('/ussd', async (req, res) => {
     const password = getText(text, 0);
     message = await loginUser(phone, password);
   } else if (textLength === 1 && getText(text, [0]) === '1') {
-    message = `${strings.con.en} ${strings.resetInstructionsSent.en}`;
+    message = await resetPassword('phone', phone);
     message += `${strings.footer.en}`;
   }
   res.send(message);

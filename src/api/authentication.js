@@ -25,4 +25,17 @@ const login = async (phone, password) => {
   return response;
 };
 
+export const forgotPassword = async (type, phone) => {
+  let response;
+  const payload = {
+    type,
+    phone,
+  };
+  try {
+    response = await axios.post(`${BASEURL}/v2/auth/forgot-password?${clientSecret}`, payload);
+    return response;
+  } catch (err) {
+    return err;
+  }
+};
 export default login;

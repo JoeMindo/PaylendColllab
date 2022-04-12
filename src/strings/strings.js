@@ -38,6 +38,15 @@ const strings = {
   resetInstructionsSent: {
     en: 'The reset instructions have been sent to your phone number\n',
   },
+  askForNewPassword: {
+    en: 'Enter your new password\n',
+  },
+  confirmNewPassword: {
+    en: 'Confirm your new password\n',
+  },
+  resetFailed: {
+    en: 'Could not find your details\n',
+  },
 };
 
 export default strings;
