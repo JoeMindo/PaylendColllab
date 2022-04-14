@@ -47,6 +47,13 @@ const strings = {
   resetFailed: {
     en: 'Could not find your details\n',
   },
+  askForOTP: {
+    en: 'Enter the OTP sent to your number\n',
+  },
+  resetSuccess: {
+    en: 'Password reset successful\n',
+  },
+
 };
 
 export default strings;

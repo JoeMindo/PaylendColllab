@@ -32,10 +32,34 @@ export const forgotPassword = async (type, phone) => {
     phone,
   };
   try {
-    response = await axios.post(`${BASEURL}/v2/auth/forgot-password?${clientSecret}`, payload);
+    response = await axios.post(`${BASEURL}/auth/forgot-password?${clientSecret}`, payload);
     return response;
   } catch (err) {
     return err;
   }
 };
+
+export const getToken = async (token) => {
+  let response;
+  const payload = {
+    code: token,
+  };
+  try {
+    response = await axios.post(`${BASEURL}/auth/verify-otp?${clientSecret}`, payload);
+    return response;
+  } catch (err) {
+    return err;
+  }
+};
+
+export const passwordReset = async (payload) => {
+  let response;
+  try {
+    response = await axios.put(`${BASEURL}/auth/reset-password?${clientSecret}`, payload);
+    return response;
+  } catch (err) {
+    return err;
+  }
+};
+
 export default login;

@@ -13,3 +13,4 @@ export const getText = (requestBody, index) => requestBody.split('*')[index];
  * character.
  */
 export const getTextLength = (requestBody) => requestBody.split('*').length;
+
