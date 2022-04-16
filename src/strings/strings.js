@@ -53,6 +53,27 @@ const strings = {
   resetSuccess: {
     en: 'Password reset successful\n',
   },
+  firstName: {
+    en: 'What is your first name?\n',
+  },
+  lastName: {
+    en: 'What is your last name?\n',
+  },
+  email: {
+    en: 'What is your email?\n',
+  },
+  country: {
+    en: 'Which country are you from?\n',
+  },
+  registrationFailed: {
+    en: 'Registration failed\n',
+  },
+  confirmDetails: {
+    en: 'Submit details?\n 1. Yes',
+  },
+  invalidInput: {
+    en: 'Invalid input\n',
+  },
 
 };
 

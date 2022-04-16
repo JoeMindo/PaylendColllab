@@ -62,4 +62,21 @@ export const passwordReset = async (payload) => {
   }
 };
 
+export const checkIfIsUser = async (phoneNumber) => {
+  try {
+    const response = await axios.get(`${BASEURL}/auth/is-user?${clientSecret}`, phoneNumber);
+    return response.data.message;
+  } catch (err) {
+    return err;
+  }
+};
+
+export const registerUser = async (userDetails) => {
+  try {
+    const response = await axios.post(`${BASEURL}/auth/signup?${clientSecret}`, userDetails);
+    return response;
+  } catch (err) {
+    return err;
+  }
+};
 export default login;
