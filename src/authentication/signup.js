@@ -58,7 +58,13 @@ const registerUserMenus = async (textLength, text, phone) => {
     }
     case (length === 8): {
       const otp = getText(text, 7);
-      console.log('the otp is', otp);
+      const response = await getToken(otp);
+      console.log('The response here is', response);
+      if (response.status === 200) {
+        message = renderMainMenus();
+      } else {
+        message = verificationFailed();
+      }
       break;
     }
 

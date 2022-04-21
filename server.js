@@ -39,6 +39,7 @@ app.post('/ussd', async (req, res) => {
   const phone = req.body.phoneNumber;
   let message;
   const textLength = getTextLength(text);
+  console.log('The text length is', textLength);
   const db = new JsonDB(new Config('myDataBase', true, false, '/'));
   if (await checkIfIsUser(phone.substring(1))) {
     if (textLength === 1 && text === '') {
