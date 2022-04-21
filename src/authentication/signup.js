@@ -18,7 +18,7 @@ const registerUserMenus = async (textLength, text, phone) => {
     case (length === 1 && text === ''):
       message = `${strings.con.en} ${strings.welcome.en} ${strings.firstName.en}`;
       break;
-    case (length === 1 && text !== '' && validateTextIsLettersOnly(text.split('*')[0])):
+    case (length === 1 && text !== '' && validateTextIsLettersOnly(firstName)):
       message = `${strings.con.en} ${strings.lastName.en}`;
       break;
     case (length === 2 && validateTextIsLettersOnly(lastName)):
@@ -58,15 +58,10 @@ const registerUserMenus = async (textLength, text, phone) => {
     }
     case (length === 8): {
       const otp = getText(text, 7);
-      const response = await getToken(otp);
-      console.log('the', response);
-      if (response.status === 200) {
-        message = renderMainMenus();
-      } else {
-        message = verificationFailed();
-      }
+      console.log('the otp is', otp);
       break;
     }
+
     default: {
       message = `${strings.con.en} ${strings.invalidInput.en}`;
     }
