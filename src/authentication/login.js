@@ -11,7 +11,7 @@ const loginUser = async (phone, password) => {
     2. ${strings.changisha.en}\n
     3. ${strings.pataVoucher.en}\n
     ${strings.footer.en}`
-    : `${strings.end.en}${strings.loginFailed.en}`;
+    : `${strings.end.en} ${response.response.data.error.message}`;
 };
 
 export const resetPassword = async (type, phone) => {

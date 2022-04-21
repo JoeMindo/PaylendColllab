@@ -7,4 +7,6 @@ export const renderMainMenus = () => `${strings.con.en} ${strings.welcome.en}${s
 2. ${strings.changisha.en}\n
 3. ${strings.pataVoucher.en}\n`;
 export const registrationFailed = () => `${strings.con.en} ${strings.registrationFailed.en}`;
+export const askToConfirmOTP = () => `${strings.con.en} ${strings.askForOTP.en}`;
+export const verificationFailed = () => `${strings.end.en} ${strings.verificationFailed.en}`;
 export default askUserToGiveNewPassword;

@@ -64,8 +64,8 @@ export const passwordReset = async (payload) => {
 
 export const checkIfIsUser = async (phoneNumber) => {
   try {
-    const response = await axios.get(`${BASEURL}/auth/is-user?${clientSecret}`, phoneNumber);
-    return response.data.message;
+    const response = await axios.get(`${BASEURL}/auth/?phone=${phoneNumber}&${clientSecret}`);
+    return response.data.data.length > 0;
   } catch (err) {
     return err;
   }
@@ -79,4 +79,5 @@ export const registerUser = async (userDetails) => {
     return err;
   }
 };
+
 export default login;

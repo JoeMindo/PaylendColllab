@@ -38,15 +38,14 @@ app.post('/ussd', async (req, res) => {
   const text = ussdRouter(rawText);
   const phone = req.body.phoneNumber;
   let message;
-
   const textLength = getTextLength(text);
   const db = new JsonDB(new Config('myDataBase', true, false, '/'));
-  if (checkIfIsUser(phone)) {
+  if (await checkIfIsUser(phone.substring(1))) {
     if (textLength === 1 && text === '') {
       message = `${strings.con.en} ${strings.welcome.en}${strings.login.en}\n1. ${strings.resetPin.en}\n`;
     } else if (textLength === 1 && text !== '' && text.length > 2) {
       const password = getText(text, 0);
-      message = await loginUser(phone, password);
+      message = await loginUser(phone.substring(1), password);
     } else if (textLength === 1 && getText(text, [0]) === '1') {
       const phoneNumber = phone.substring(1);
       message = await resetPassword('phone', phoneNumber);
@@ -65,7 +64,6 @@ app.post('/ussd', async (req, res) => {
       message = askUserToConfirmPassword();
     } else if (textLength === 4 && getText(text, [0]) === '1') {
       const data = db.getData('/token');
-      console.log('The data here is', data);
       const resetPasswordPayload = {
         password: text.split('*')[2],
         confirm_password: text.split('*')[3],

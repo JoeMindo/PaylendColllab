@@ -74,6 +74,9 @@ const strings = {
   invalidInput: {
     en: 'Invalid input\n',
   },
+  verificationFailed: {
+    en: 'Verification failed',
+  },
 
 };
 
